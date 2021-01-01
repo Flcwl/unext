@@ -1,8 +1,8 @@
 {
-  "name": "duration-pretty",
+  "name": "unext",
   "version": "0.1.0",
   "types": "lib/*.d.ts",
-  "description": "A pure JavaScript library that parses duration time length to format display",
+  "description": "A modern web utils collection using esnext.",
   "main": "lib/index.js",
   "scripts": {
     "test": "jest --config jest.config.json",
@@ -14,18 +14,19 @@
   },
   "author": "Flcwl",
   "keywords": [
-    "time",
-    "duration",
-    "format"
+    "unext",
+    "utils",
+    "esnext",
+    "modules"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/Flcwl/duration-pretty",
+  "homepage": "https://github.com/Flcwl/unext",
   "bugs": {
-    "url": "https://github.com/Flcwl/duration-pretty/issues"
+    "url": "https://github.com/Flcwl/unext/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Flcwl/duration-pretty.git"
+    "url": "git+https://github.com/Flcwl/unext.git"
   },
   "devDependencies": {
     "@types/jest": "^24.0.15",
@@ -41,5 +42,8 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "dependencies": {
+    "@types/node": "^14.14.17"
+  }
 }

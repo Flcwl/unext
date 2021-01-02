@@ -1,20 +1,19 @@
-/**
- * debounce optimization
- *
- * @param callback
- * @param timeout
- */
-export const debounce = (callback: Function, timeout: number): Function => {
-  let timer: undefined | number = undefined
+import debounce from '../lib/debounce';
 
-  return function(...args: any[]) {
-    if (timer) {
-      clearTimeout(timer)
-    }
+describe('debounce', () => {
+  it('should debounce with fast timeout', function() {
+    let count = 0
+    const debounced = debounce(() => {
+      count++
+    }, 100)
 
-    timer = setTimeout(() => {
-      // eslint-disable-next-line prefer-spread
-      callback.apply(null, args)
-    }, timeout)
-  }
-}
+    setTimeout(debounced, 100)
+    setTimeout(debounced, 150)
+    setTimeout(debounced, 200)
+    setTimeout(debounced, 250)
+
+    setTimeout(() => {
+    expect(count).toEqual(1)
+    }, 350);
+  })
+});

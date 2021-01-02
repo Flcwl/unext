@@ -1,32 +1,13 @@
-const isArray = Array.isArray
-import { isBrowser } from './env'
-/**
- * deep clone
- * @param src
- */
-export const cloneDeep = <T>(src: T): T => {
-  if (typeof src !== 'object' || src === null) {
-    return src
-  }
+import cloneDeep from '../lib/cloneDeep';
 
-  let target
+describe('cloneDeep', () => {
+  it('should cloneDeep object with deep', function() {
+    const obj = { 'a': [{ 'b': { 'c': 3 } }], d: { e: 4}, f: 5 };
 
-  if (isArray(src)) {
-    target = (src as unknown[]).map(cloneDeep)
-  } else if (src instanceof Date) {
-    target = new Date(src.getTime())
-  } else if (isBrowser && src instanceof Node) {
-    target = src.cloneNode(true)
-  } else {
-    const Ctor = Object.getPrototypeOf(src).constructor
-    target = new Ctor()
+    const expected = cloneDeep(obj)
 
-    const isPack = src instanceof String || src instanceof Boolean || src instanceof Number
-    if (!isPack) {
-      for (const key in src) {
-        target[key] = cloneDeep(src[key])
-      }
-    }
-  }
-  return target
-}
+    expect(expected).toEqual(obj)
+    expect(expected.a).toEqual(obj.a)
+    expect(expected.a[0].b).toEqual(obj.a[0].b)
+  })
+});

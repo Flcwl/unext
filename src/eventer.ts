@@ -18,10 +18,10 @@ class Eventer {
     return this
   }
 
-  notify = (type: string, ...args: unknown[]) => {
+  trigger = (type: string, ...args: unknown[]) => {
     const tasks = this.subscribers[type]
     if (!tasks) {
-      new Error(`Type: ${type} is not subscribed by Eventer.`)
+      console.error(`Type: ${type} is not subscribed by Eventer.`)
       return
     }
 

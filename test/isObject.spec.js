@@ -1,8 +1,7 @@
-import toOwnString from './toOwnString';
+import isObject from '../lib/isObject';
 
-const isObject = (o: unknown) => {
-  return toOwnString(o) === '[object Object]'
-}
-
-
-export default isObject
+describe('isObject', () => {
+  it('return `true` when is an object', () => {
+    expect(isObject({})).toEqual(true)
+  });
+})

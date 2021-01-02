@@ -1,13 +1,11 @@
-/* global window process */
+import { isNode, isBrowser } from '../lib/env';
 
-const _isBrowser = () => {
-  return typeof window !== 'undefined' && typeof window.document !== 'undefined'
-}
+describe('env', () => {
+  it('isNode didn\'t work', () => {
+    expect(isNode).toEqual(true);
+  });
 
-export const isBrowser = (() => _isBrowser())()
-
-const _isNode = () => {
-  return typeof process !== 'undefined' && process.versions != null && process.versions.node != null
-}
-
-export const isNode = (() => _isNode())()
+  it('isBrowser didn\'t work', () => {
+    expect(isBrowser).toEqual(false);
+  });
+});

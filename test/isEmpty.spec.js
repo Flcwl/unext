@@ -1,52 +1,47 @@
-import hasOwnProp from './hasOwnProp'
+import isEmpty from '../lib/isEmpty';
 
-/**
- * Checks if `value` is an empty string, object, array, map, or set.
- * @param {*} value
- * @returns {boolean}
- * @example
- *
- * isEmpty(null)
- * // => true
- *
- * isEmpty(true)
- * // => true
- *
- * isEmpty(1)
- * // => true
- *
- * isEmpty(new Map())
- * // => true
- *
- * isEmpty(new Set())
- * // => true
- *
- * isEmpty({})
- * // => true
- *
- * isEmpty([1, 2, 3])
- * // => false
- *
- * isEmpty('abc')
- * // => false
- *
- * isEmpty({ 'a': 1 })
- * // => false
- */
-const isEmpty = (value) => {
-  if (value == null) {
-    return true
-  }
-  if (Array.isArray(value) || typeof value === 'string') {
-    return !value.length
-  }
+describe('isEmpty', () => {
+  it('return `true` when value is `null`', () => {
+    expect(isEmpty(null)).toEqual(true)
+  });
 
-  for (const key in value) {
-    if (hasOwnProp(value, key)) {
-      return false
-    }
-  }
-  return true
-}
+  it('return `true` when value is `true`', () => {
+    expect(isEmpty(true)).toEqual(true)
+  });
 
-export default isEmpty
+  it('return `true` when value is number', () => {
+    expect(isEmpty(1)).toEqual(true)
+  });
+
+  it('return `true` when value is empty string', () => {
+    expect(isEmpty('')).toEqual(true)
+  });
+
+  it('return `true` when value is empty `Map`', () => {
+    expect(isEmpty(new Map())).toEqual(true)
+  });
+
+  it('return `true` when value is empty `Set`', () => {
+    expect(isEmpty(new Set())).toEqual(true)
+  });
+
+  it('return `true` when value is empty object', () => {
+    expect(isEmpty({})).toEqual(true)
+  });
+
+  it('return `true` when value is empty array', () => {
+    expect(isEmpty([])).toEqual(true)
+  });
+
+  it('return `false` when value is not empty array', () => {
+    expect(isEmpty([1, 2, 3])).toEqual(false)
+  });
+
+  it('return `false` when value is not empty string', () => {
+    expect(isEmpty('abc')).toEqual(false)
+  });
+
+  it('return `false` when value is not empty object', () => {
+    expect(isEmpty({ a: 1 })).toEqual(false)
+  });
+})

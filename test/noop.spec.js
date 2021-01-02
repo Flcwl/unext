@@ -1,5 +1,10 @@
-/**
- * Noop Function using as default function
- */
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-export const noop = () => {}
+import noop from '../lib/noop';
+
+describe('noop', () => {
+  it('noop work as default callback', () => {
+    const fn = (callback = noop) => {
+      return callback()
+    }
+    expect(fn()).toEqual(undefined)
+  });
+})

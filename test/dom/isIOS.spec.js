@@ -9,7 +9,7 @@ describe('Test isIOS module', () => {
   }
 
   it('Test isIOS by navigator', () => {
-    const expectedResult = isIOS(_window)
-    expect(expectedResult).toEqual(true)
+    const received = isIOS(_window)
+    expect(received).toEqual(true)
   })
 })

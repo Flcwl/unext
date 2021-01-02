@@ -1,7 +1,10 @@
-const _toString = Object.prototype.toString
+import toOwnString from '../lib/toOwnString';
 
- const toOwnString = (obj: unknown): string => {
-  return _toString.call(obj)
-}
-
-export default toOwnString
+describe('object: toOwnString', () => {
+  it('toOwnString method work with Array', function() {
+    const arr = [];
+    const received = toOwnString(arr)
+    const expected = '[object][array]';
+    expect(received).toEqual(expected)
+  });
+});

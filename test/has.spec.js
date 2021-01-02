@@ -1,28 +1,11 @@
-import hasOwnProp from './hasOwnProp'
+import has from '../lib/has';
 
-/**
- * Check if exist an value by deep key in nested object
- *
- * @param {object} obj
- * @param {(string[] | string)} path
- * @returns {boolean}
- * @example
- *
- * has({ a: { b: 3 } }, 'a.b')
- * // => true
- * has({ a: { b: 3 } }, 'a.b.c')
- * // => true
- */
-export const has = (obj: object, path: string[] | string): boolean => {
-  const props = Array.isArray(path) ? path : (path + '').split('.')
-  let target = obj
+describe('has', () => {
+  it('set work with string', () => {
+    const obj = { 'a': [{ 'b': { 'c': 3 } }] };
 
-  for (let i = 0, len = props.length; i < len; ++i) {
-    const key = props[i]
-    if (!hasOwnProp(target, key)) {
-      return false
-    }
-    target = target[key]
-  }
-  return true
-}
+    expect(has(object, 'a.0.b.c')).toEqual(true);
+    expect(has(obj, 'd')).toEqual(false)
+    expect(has(obj, 'a.1')).toEqual(false)
+  });
+})

@@ -1,21 +1,30 @@
-/**
- * Set value to deep key in nested object
- *
- * @param {object} obj
- * @param {(string[] | string)} path
- * @param {*} value
- * @example
- *
- * const a = { a: { b: 2 } }
- * set(a, 'a.b', 4)
- * // => { a: { b: 4 } }
- */
-export const set = (obj: object, path: string[] | string, value: unknown): void => {
-  const props = Array.isArray(path) ? path : (path + '').split('.')
-  let i = 0
-  const len = props.length - 1
-  while (i < len) {
-    obj = obj[props[i++]]
-  }
-  obj[props[i]] = value
-}
+
+import set from '../lib/set';
+
+describe('set', function () {
+
+  it('set work with string', function () {
+
+    const object = { 'a': [{ 'b': { 'c': 3 } }] };
+
+    expect(set(object, 'a.0.b.c', 4).a[0].b.c).toEqual(4);
+
+    expect(set({ foo: { bar: 'baz' } }, 'foo.arr.0', 3)).toEqual({
+      foo: {
+        bar: 'baz',
+        arr: {
+          '0': 3
+        }
+      }
+    });
+
+    expect(set({ foo: { bar: 'baz' } }, 'foo.obj.key', 3)).toEqual({
+      foo: {
+        bar: 'baz',
+        obj: { key: 3 }
+      }
+    });
+
+    expect(set(null, 'foo.obj.key', 3)).toEqual(null);
+  });
+});

@@ -28,21 +28,21 @@
     "url": "git+https://github.com/Flcwl/unext.git"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.15",
-    "@typescript-eslint/eslint-plugin": "^4.3.0",
-    "@typescript-eslint/parser": "^4.3.0",
-    "eslint": "^7.10.0",
-    "jest": "^24.8.0",
-    "prettier": "^1.18.2",
+    "@types/jest": "^26.0.19",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
+    "eslint": "^7.17.0",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "tslint": "^5.18.0",
+    "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.5.3"
+    "typescript": "^4.1.3"
   },
   "files": [
     "lib/**/*"
   ],
   "dependencies": {
-    "@types/node": "^14.14.17"
+    "@types/node": "^14.14.19"
   }
 }

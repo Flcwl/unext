@@ -1,79 +1,27 @@
-import isObject from './isObject'
+import { underline2camelcase, camelcase2underline } from '../lib/transform';
 
-const transform = ({ obj, deep, separator, transHandler, transKeyHandler }) => {
-  if (Array.isArray(obj)) {
-    return obj.map((item) => transHandler(item, deep, separator))
-  } else if (isObject(obj)) {
-    return Object.keys(obj).reduce((result, key) => {
-      const val = obj[key]
-      const newKey = transKeyHandler(key, separator)
-      const shouldDeep = deep && (isObject(val) || Array.isArray(val))
-      const newVal = shouldDeep ? transHandler(val, deep, separator) : val
-      result[newKey] = newVal
-      return result
-    }, {})
-  } else if (typeof obj === 'string') {
-    return transKeyHandler(obj, separator)
-  }
-  return obj
-}
+describe('string|object: transform methods', () => {
+  describe('underline2camelcase', () => {
+    it('camelcase method work with `string`', () => {
+      expect(underline2camelcase('foo')).toEqual('foo');
+      expect(underline2camelcase('--foo-bar')).toEqual('fooBar');
+      expect(underline2camelcase('foo_bar')).toEqual('fooBar');
+      expect(underline2camelcase('__foo__bar__')).toEqual('fooBar');
+      expect(underline2camelcase('__foo__bar__')).toEqual('fooBar');
+      expect(underline2camelcase('-')).toEqual('-');
+      expect(underline2camelcase('--__--_--_')).toEqual('');
+      expect(underline2camelcase('桑德_在这里。')).toEqual('桑德在这里。');
+    });
 
-/**
- * transform object keys from underline to camelCase
- *
- * @param obj
- * @param deep
- * @param separator
- * @example
- *
- * underline2camelcase({
- *   abc_def_gh: {
- *     abc_def_gh: 'abc_def_gh'
- *   },
- * })
- * // => { abcDefGh: { abcDefGh: 'abc_def_gh' } }
- */
-export const underline2camelcase = (obj: unknown, deep = true, separator = '_') => {
-  return transform({
-    obj,
-    deep,
-    separator,
-    transHandler: underline2camelcase,
-    transKeyHandler: function underline2CamelCaseKey(key: string, separator = '') {
-      const reg = new RegExp(`${separator}([a-zA-Z])`, 'g')
-      return key.replace(reg, (_, letter) => {
-        return letter.toUpperCase()
-      })
-    },
-  })
-}
-
-/**
- * transform object keys from camelCase to underline
- *
- * @param obj
- * @param deep
- * @param separator
- * @example
- *
- * camelcase2underline({
- *   abcDefGh: {
- *     abcDefGh: 'abcDefGh',
- *   },
- * })
- * // => { abc_def_gh: { abc_def_gh: 'abcDefGh' } }
- */
-export const camelcase2underline = (obj: unknown, deep = true, separator = '') => {
-  return transform({
-    obj,
-    deep,
-    separator,
-    transHandler: camelcase2underline,
-    transKeyHandler: function camelCase2UnderlineKey(key: string, separator = '') {
-      const reg = new RegExp(`${separator}([A-Z])`, 'g')
-      return key.replace(reg, (_, letter) => {
-        return `_${letter.toLowerCase()}`
-      })
-    },
-  })
-}
+    it('camelcase method work with `object`', () => {
+      expect(underline2camelcase({foo:'foo'})).toEqual('foo');
+      expect(underline2camelcase({'--foo-bar': '--foo-bar'})).toEqual('fooBar');
+      expect(underline2camelcase({ 'foo_bar': 'foo_bar'})).toEqual('fooBar');
+      expect(underline2camelcase({ '__foo__bar__': '__foo__bar__' })).toEqual('fooBar');
+      expect(underline2camelcase({ '__foo__bar__': '__foo__bar__' })).toEqual('fooBar');
+      expect(underline2camelcase({ '-': '-' })).toEqual('-');
+      expect(underline2camelcase({ '--__--_--_': '--__--_--_'})).toEqual('');
+      expect(underline2camelcase({ '桑德_在这里': '桑德_在这里'})).toEqual('桑德在这里');
+    });
+  });
+});

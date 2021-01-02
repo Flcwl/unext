@@ -1,23 +1,10 @@
-/**
- * Init an array with filler
- *
- * @generic T
- * @param {number} size
- * @param {(index: number) => T} fill
- * @returns {T[]}
- */
-export const initList = <T>(size: number, fill: (index: number) => T | unknown): T[] => {
-  const arr = []
+import initList from '../lib/initList';
 
-  if (typeof fill === 'function') {
-    for (let i = 0; i < size; ++i) {
-      arr.push(fill(i))
-    }
-  } else {
-    for (let i = 0; i < size; ++i) {
-      arr.push(fill)
-    }
-  }
-
-  return arr
-}
+describe('initList', () => {
+  it('Initialize an list of the specified length', () => {
+    const received =  initList(3, () => ({}))
+    const expected = [{}, {}, {}]
+    expect(received).toEqual(expected)
+    expect(expected[0] !== expected[1]).toEqual(true)
+  });
+})

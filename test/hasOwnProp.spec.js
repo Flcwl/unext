@@ -1,6 +1,9 @@
-const _hasOwnProperty = Object.prototype.hasOwnProperty
+import hasOwnProp from '../lib/hasOwnProp';
 
-const hasOwnProp = (obj: object, key: string) => {
-  return _hasOwnProperty.call(obj, key)
-}
-export default hasOwnProp
+describe('hasOwnProp', () => {
+  it('return `true` when has props in an object', () => {
+    const obj = { a: 1 }
+    expect(hasOwnProp(obj, 'a')).toEqual(true)
+    expect(hasOwnProp(obj, 'c')).toEqual(false)
+  });
+})

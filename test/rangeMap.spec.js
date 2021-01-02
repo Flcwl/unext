@@ -1,26 +1,13 @@
-/**
- * Range map to an array
- * @param arr
- * @param start
- * @param end
- * @param callback
- */
-const rangeMap = <T>(
-  arr: T[],
-  start: number,
-  end: number,
-  callback: (value: T, index: number, array: T[]) => unknown[]
-): [] => {
-  const newArr = []
-  const len = arr.length
+import rangeMap from '../lib/rangeMap';
 
-  if (!Array.isArray(arr) || start >= end || start > len || end < 0) return newArr
+describe('rangeMap', () => {
+  it('rangeMap array without callback', () => {
+    const arr = [1, 2, 3, 4]
+    expect(rangeMap(arr, 1, 2)).toEqual([2, 3])
+  });
 
-  if (start < 0) start = 0
-  if (end > len) end = len
-
-  const iteratee = typeof callback === 'function' ? callback : (v) => v
-  return arr.map(iteratee)
-}
-
-export default rangeMap
+  it('rangeMap array with callback', () => {
+    const arr = [1, 2, 3, 4]
+    expect(rangeMap(arr, 1, 3, (v) => v * 2)).toEqual([4, 6, 8])
+  });
+})

@@ -1,42 +1,25 @@
-import { get } from './get'
+import groupBy from '../lib/groupBy';
 
-/**
- * Generate an object composed of keys transformed by key.
- *
- * @param {any[]} list
- * @param {string|Function} key
- * @returns {Object}
- * @example
- *
- * groupBy([6.1, 4.2, 6.3], Math.floor)
- * // => { '4': [4.2], '6': [6.1, 6.3] }
- * groupBy(['one', 'two', 'three'], 'length')
- * // => { '3': ['one', 'two'], '5': ['three'] }
- */
-export const groupBy = (list: unknown[], key: string | Function) => {
-  const iteratee = typeof key === 'function' ? key : (val: Record<string, unknown>) => get(val, key)
+describe('groupBy', () => {
+  it('groupBy work with function', () => {
+    const received = groupBy([6.1, 4.2, 6.3], Math.floor)
+    const expected = { '4': [4.2], '6': [6.1, 6.3] }
+    expect(received).toEqual(expected);
+  });
 
-  return list.reduce((result: Record<string, unknown>, value: unknown) => {
-    const type = iteratee(value)
-    ;(result[type] = result[type] || []).push(value)
-    return result
-  }, {})
-}
+  it('groupBy work with string in string[]', () => {
+    const received = groupBy(['one', 'two', 'three'], 'length')
+    const expected = { '3': ['one', 'two'], '5': ['three'] }
+    expect(received).toEqual(expected);
+  });
 
-// console.log(
-//   groupBy(
-//     [
-//       { a: 1, b: 2 },
-//       { a: 2, b: 3 },
-//       { a: 1, d: 5 },
-//     ],
-//     'a'
-//   )
-// )
-// // { '1': [ { a: 1, b: 2 }, { a: 1, d: 5 } ], '2': [ { a: 2, b: 3 } ] }
-
-// console.log(groupBy([6.1, 4.2, 6.3], Math.floor))
-// // => { '4': [4.2], '6': [6.1, 6.3] }
-
-// console.log(groupBy(['one', 'two', 'three'], 'length'))
-// // => { '3': ['one', 'two'], '5': ['three'] }
+  it('groupBy work with string in object[]', () => {
+    const received = groupBy([
+      { a: 1, b: 2 },
+      { a: 2, b: 3 },
+      { a: 1, d: 5 },
+    ], 'a')
+    const expected = { '1': [ { a: 1, b: 2 }, { a: 1, d: 5 } ], '2': [ { a: 2, b: 3 } ] }
+    expect(received).toEqual(expected);
+  });
+})

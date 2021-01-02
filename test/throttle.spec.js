@@ -1,20 +1,42 @@
-/**
- * throttle optimization
- *
- * @param callback
- * @param timeout
- */
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const throttle = (callback: Function, timeout: number): Function => {
-  let timer: undefined | number | NodeJS.Timeout = undefined
+import throttle from '../lib/throttle';
 
-  return function(...args: unknown[]) {
-    if (timer) return
+describe('throttle', () => {
+  it('should throttle a function', () => {
+    let count = 0
+    const initialCount = count;
+    const throttled = throttle(() => { count++; }, 32);
 
-    timer = setTimeout(() => {
-      timer = undefined
-      // eslint-disable-next-line prefer-spread
-      callback.apply(null, args)
-    }, timeout)
-  }
-}
+    throttled();
+    throttled();
+    throttled();
+    expect(count).toEqual(initialCount)
+
+    setTimeout(() => {
+      expect(count).toEqual(initialCount)
+      expect(count > initialCount).toEqual(true)
+    }, 64);
+  });
+
+  it('should trigger a second throttled call as soon as possible', () => {
+    let count = 0;
+    const throttled = throttle(() => {
+      count++;
+    }, 128);
+
+    throttled();
+
+    setTimeout(() => {
+      expect(count).toEqual(1)
+      throttled();
+    }, 192);
+
+    setTimeout(() => {
+      expect(count).toEqual(1)
+    }, 254);
+
+    setTimeout(() => {
+      expect(count).toEqual(2)
+    }, 384);
+  });
+
+})

@@ -1,10 +1,10 @@
-# Duration Pretty
+# Unext
 
-[![Build Status](https://travis-ci.org/Flcwl/duration-pretty.svg?branch=master)](https://travis-ci.org/github/Flcwl/duration-pretty)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Flcwl/duration-pretty/blob/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/duration-pretty.svg?style=flat)](https://www.npmjs.com/package/duration-pretty)
+[![Build Status](https://travis-ci.org/Flcwl/unext.svg?branch=master)](https://travis-ci.org/github/Flcwl/unext)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Flcwl/unext/blob/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/unext.svg?style=flat)](https://www.npmjs.com/package/unext)
 
-> The plugin is a pure JavaScript library that parses duration time length to format display.
+> A modern web utils collection using esnext.
 
 ## Getting Started
 
@@ -38,24 +38,6 @@ or using ES6 Module:
 import { duration } from 'duration-pretty'
 
 duration(7380, 'seconds').format('H:mm') // "2:03"
-```
-
-The template string is parsed for universal token characters, which are replaced with the duration's value for each unit type. The tokens are:
-
-```js
-years: Y
-months: M | MM
-days: D | DD
-hours: H | HH
-minutes: m | mm
-seconds： s | ss
-milliseconds: SSS
-```
-
-Escape token characters within the template string using `[]`.
-
-```js
-duration(3661, 'seconds').format('H [[H]], m [[m] countdown]') // "1 [H], 1 [m countdown]"
 ```
 
 ## Tests

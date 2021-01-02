@@ -1,3 +1,5 @@
+import isIOS from "./isIOS"
+
 /**
  * Copy to clipboard
  *
@@ -92,10 +94,4 @@ function createTextArea(content) {
 function isSupported(action) {
   const support = document.queryCommandSupported
   return !!support && support(action)
-}
-
-function isIOS() {
-  return (
-    /iPad|iPhone|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
-  )
 }

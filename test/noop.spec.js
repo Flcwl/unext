@@ -1,4 +1,4 @@
-import noop from '../lib/noop';
+import noop from '../lib/noop'
 
 describe('noop', () => {
   it('noop work as default callback', () => {
@@ -6,5 +6,5 @@ describe('noop', () => {
       return callback()
     }
     expect(fn()).toEqual(undefined)
-  });
+  })
 })

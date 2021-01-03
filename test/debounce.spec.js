@@ -1,4 +1,4 @@
-import debounce from '../lib/debounce';
+import debounce from '../lib/debounce'
 
 describe('debounce', () => {
   it('should debounce with less than timeout', () => {
@@ -14,16 +14,16 @@ describe('debounce', () => {
 
     setTimeout(() => {
       expect(count).toEqual(0)
-    }, 50);
+    }, 50)
     setTimeout(() => {
       expect(count).toEqual(0)
-    }, 150);
+    }, 150)
     setTimeout(() => {
       expect(count).toEqual(0)
-    }, 250);
+    }, 250)
     setTimeout(() => {
       expect(count).toEqual(0)
-    }, 350);
+    }, 350)
   })
 
   it('should debounce with fast timeout', () => {
@@ -37,7 +37,7 @@ describe('debounce', () => {
     setTimeout(debounced, 250)
     expect(count).toEqual(0)
     setTimeout(() => {
-    expect(count).toEqual(1)
-    }, 350);
+      expect(count).toEqual(1)
+    }, 350)
   })
-});
+})

@@ -1,5 +1,4 @@
-
-import isNumeric from '../lib/isNumeric';
+import isNumeric from '../lib/isNumeric'
 
 describe('isNumeric', () => {
   it('isNumeric method work with number', () => {
@@ -13,4 +12,4 @@ describe('isNumeric', () => {
   it(`isNumeric method did't work with letter`, () => {
     expect(isNumeric('1a')).toEqual(false)
   })
-});
+})

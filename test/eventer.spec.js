@@ -1,4 +1,4 @@
-import Eventer from '../lib/eventer';
+import Eventer from '../lib/eventer'
 
 describe('Eventer', () => {
   it('Eventer trigger', () => {
@@ -10,12 +10,12 @@ describe('Eventer', () => {
     event.on('test', callback)
 
     event.trigger('test')
-    expect(count).toEqual(1);
+    expect(count).toEqual(1)
 
     event.off('test', callback)
     event.trigger('test')
-    expect(count).toEqual(1);
-  });
+    expect(count).toEqual(1)
+  })
 
   it('Eventer off all', () => {
     const event = new Eventer()
@@ -26,10 +26,10 @@ describe('Eventer', () => {
     event.on('test', callback)
 
     event.trigger('test')
-    expect(count).toEqual(1);
+    expect(count).toEqual(1)
 
     event.off('test')
     event.trigger('test')
-    expect(count).toEqual(1);
-  });
+    expect(count).toEqual(1)
+  })
 })

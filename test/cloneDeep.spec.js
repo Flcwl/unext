@@ -1,10 +1,10 @@
-import cloneDeep from '../lib/cloneDeep';
+import cloneDeep from '../lib/cloneDeep'
 
 describe('cloneDeep', () => {
-  const obj = { 'a': [{ 'b': { 'c': 3 } }], d: { e: 4}, f: 5 };
+  const obj = { a: [{ b: { c: 3 } }], d: { e: 4 }, f: 5 }
   const expected = cloneDeep(obj)
 
-  it('should cloneDeep object with deep', function() {
+  it('should cloneDeep object with deep', function () {
     expect(expected).toEqual(obj)
     expect(expected.a).toEqual(obj.a)
     expect(expected.a[0].b).toEqual(obj.a[0].b)
@@ -15,4 +15,4 @@ describe('cloneDeep', () => {
     expect(expected.a !== obj.a).toEqual(true)
     expect(expected.a[0].b !== obj.a[0].b).toEqual(true)
   })
-});
+})

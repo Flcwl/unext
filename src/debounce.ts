@@ -7,7 +7,7 @@
 export const debounce = (callback: Function, timeout: number): Function => {
   let timer: undefined | number | NodeJS.Timeout = undefined
 
-  return function debounced (...args: unknown[]) {
+  return function debounced(...args: unknown[]) {
     if (timer) {
       clearTimeout(timer as number)
     }

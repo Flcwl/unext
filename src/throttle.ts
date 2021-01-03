@@ -8,7 +8,7 @@
 const throttle = (callback: Function, timeout: number): Function => {
   let timer: undefined | number | NodeJS.Timeout = undefined
 
-  return function(...args: unknown[]) {
+  return function (...args: unknown[]) {
     if (timer) return
 
     timer = setTimeout(() => {

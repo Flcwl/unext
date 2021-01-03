@@ -1,6 +1,6 @@
 const _toString = Object.prototype.toString
 
- const toOwnString = (obj: unknown): string => {
+const toOwnString = (obj: unknown): string => {
   return _toString.call(obj)
 }
 

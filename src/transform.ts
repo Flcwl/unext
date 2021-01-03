@@ -1,5 +1,5 @@
 import isObject from './isObject'
-import trim from './trim';
+import trim from './trim'
 
 const transform = ({ obj, deep, separator, transHandler, transKeyHandler }) => {
   if (Array.isArray(obj)) {

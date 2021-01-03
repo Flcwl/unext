@@ -7,4 +7,4 @@ export default copyToClipboard;
  *
  * @param {string | DOM} $textarea
  */
-declare function copyToClipboard($textarea: string | any): any;
+declare function copyToClipboard($textarea: string | any): Promise<void>;

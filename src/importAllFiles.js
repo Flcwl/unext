@@ -1,5 +1,3 @@
-
-
 /**
  * Use require.context to require contexts automatically
  *

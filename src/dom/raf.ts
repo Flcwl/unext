@@ -1,4 +1,4 @@
-function _raf () {
+function _raf() {
   if (typeof window !== 'undefined') {
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame
   }

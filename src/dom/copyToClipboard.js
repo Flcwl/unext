@@ -1,4 +1,4 @@
-import isIOS from "./isIOS"
+import isIOS from './isIOS'
 
 /**
  * Copy to clipboard

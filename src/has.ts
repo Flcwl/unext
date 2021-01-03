@@ -28,4 +28,3 @@ const has = (obj: object, path: string[] | string): boolean => {
 }
 
 export default has
-

@@ -14,7 +14,7 @@ class Eventer {
   }
 
   on = (type: string, callback: Function) => {
-    (this.subscribers[type] = this.subscribers[type] || []).push(callback)
+    ;(this.subscribers[type] = this.subscribers[type] || []).push(callback)
     return this
   }
 

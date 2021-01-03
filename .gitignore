@@ -3,6 +3,7 @@
 ~*
 ._*
 .DS_Store
+*.bak
 
 # dependencies
 node_modules

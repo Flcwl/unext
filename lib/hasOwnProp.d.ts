@@ -1,2 +1,2 @@
-declare const hasOwnProp: (obj: object, key: string) => any;
+declare const hasOwnProp: (obj: object, key: string) => boolean;
 export default hasOwnProp;

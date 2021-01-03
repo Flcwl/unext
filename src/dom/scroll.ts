@@ -1,4 +1,4 @@
-import raf from './raf';
+import raf from './raf'
 
 // options可设置参数如下
 const genDefaultOptions = () => ({
@@ -27,7 +27,7 @@ const Scroll = {
    * @param {object} [options={}] 可选参数 见上
    * @todo 扩展动画参数 easing | 滚动结束回调
    */
-  animateScrollTo (y, options = {}) {
+  animateScrollTo(y, options = {}) {
     const start = currentYPosition(options.el) || 0
     const defaultOpt = genDefaultOptions()
     const data = Object.assign(defaultOpt, options, {
@@ -43,19 +43,19 @@ const Scroll = {
    *
    * @param {object} options 可选参数 见上
    */
-  scrollToTop (options) {
+  scrollToTop(options) {
     this.animateScrollTo(0, options)
   },
 }
 
 export default Scroll
 
-export function currentYPosition (el = window) {
+export function currentYPosition(el = window) {
   return (el === window ? Math.ceil(window.pageYOffset || window.scrollY) : el.scrollTop) || 0
 }
 
 // 计算动画 easeInOut 末位置
-export function easeInOutQuad (t, b, c, d) {
+export function easeInOutQuad(t, b, c, d) {
   t /= d / 2
   if (t < 1) return (c / 2) * t * t + b
   t--

@@ -1,4 +1,4 @@
-import hasOwnProp from '../lib/hasOwnProp';
+import hasOwnProp from './hasOwnProp'
 /**
  * Set value to deep key in nested object
  *

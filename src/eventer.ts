@@ -37,6 +37,11 @@ class Eventer {
   }
 
   off = (type: string, callback: Function) => {
+    if (!callback) {
+      delete this.subscribers[type]
+      return
+    }
+
     const tasks = this.subscribers[type]
     if (!tasks) return this
     remove(tasks, callback)

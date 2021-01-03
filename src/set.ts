@@ -1,3 +1,4 @@
+import hasOwnProp from '../lib/hasOwnProp';
 /**
  * Set value to deep key in nested object
  *
@@ -12,10 +13,17 @@
  */
 const set = (obj: object, path: string[] | string, value: unknown): void => {
   const props = Array.isArray(path) ? path : (path + '').split('.')
-  let i = 0
+
   const len = props.length - 1
+  let i = 0
+  let key = undefined
+
   while (i < len) {
-    obj = obj[props[i++]]
+    key = props[i++]
+    if (!hasOwnProp(obj, key)) {
+      obj[key] = {}
+    }
+    obj = obj[key]
   }
   obj[props[i]] = value
 }

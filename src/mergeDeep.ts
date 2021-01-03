@@ -24,7 +24,6 @@ const mergeDeep = (target: object | [], ...objects: object[]) => {
       if (hasOwnProp(source, key)) {
         const oldVal = source[key]
         const newVal = target[key]
-        console.log(key, oldVal, newVal)
         target[key] = isObject(oldVal) ? mergeDeep(newVal, oldVal) : cloneDeep(oldVal)
       }
     }

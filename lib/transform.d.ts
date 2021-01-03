@@ -13,7 +13,7 @@
  * })
  * // => { abcDefGh: { abcDefGh: 'abc_def_gh' } }
  */
-export declare const underline2camelcase: (obj: unknown, deep?: boolean, separator?: string) => any;
+export declare const toCamelcase: (obj: unknown, deep?: boolean, separator?: string) => any;
 /**
  * transform object keys from camelCase to underline
  *
@@ -29,4 +29,4 @@ export declare const underline2camelcase: (obj: unknown, deep?: boolean, separat
  * })
  * // => { abc_def_gh: { abc_def_gh: 'abcDefGh' } }
  */
-export declare const camelcase2underline: (obj: unknown, deep?: boolean, separator?: string) => any;
+export declare const toUnderline: (obj: unknown, deep?: boolean, separator?: string) => any;

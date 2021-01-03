@@ -9,7 +9,8 @@ const uniqBy = <T>(arr: T[], key: string): T[] => {
   const visited = new Set()
 
   return arr.filter((item) => {
-    const value = item[key]
+    let value = item[key]
+    value = value !== 0 ? value : 0 // -0 as 0
     if (visited.has(value)) return false
 
     visited.add(value)

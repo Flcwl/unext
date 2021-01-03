@@ -11,7 +11,7 @@ describe('Array: uniqBy method', () => {
   it('uniqBy method should treat `-0` as `0`', function() {
     const objects = [{ 'a':  -0}, { 'a': +0 }, { 'a': 0 }];
     const received = uniqBy(objects, 'a')
-    const expected = [{ 'a': 0 }];
+    const expected = [{ a: -0 }];
     expect(received).toEqual(expected)
   });
 

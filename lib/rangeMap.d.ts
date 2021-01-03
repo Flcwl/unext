@@ -5,5 +5,5 @@
  * @param end
  * @param callback
  */
-declare const rangeMap: <T>(arr: T[], start: number, end: number, callback: (value: T, index: number, array: T[]) => unknown[]) => [];
+declare const rangeMap: <T>(arr: T[], start: number, end: number, callback: (value: T, index: number, array: T[]) => unknown[]) => unknown[];
 export default rangeMap;

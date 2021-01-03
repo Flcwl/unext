@@ -15,5 +15,5 @@ declare const Scroll: {
     scrollToTop(options: any): void;
 };
 export default Scroll;
-export declare function currentYPosition(el?: Window & typeof globalThis): any;
+export declare function currentYPosition(el?: any): any;
 export declare function easeInOutQuad(t: any, b: any, c: any, d: any): any;

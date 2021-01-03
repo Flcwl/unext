@@ -1,4 +1,5 @@
 import isObject from './isObject'
+import trim from './trim';
 
 const transform = ({ obj, deep, separator, transHandler, transKeyHandler }) => {
   if (Array.isArray(obj)) {
@@ -33,14 +34,16 @@ const transform = ({ obj, deep, separator, transHandler, transKeyHandler }) => {
  * })
  * // => { abcDefGh: { abcDefGh: 'abc_def_gh' } }
  */
-export const underline2camelcase = (obj: unknown, deep = true, separator = '_') => {
+export const toCamelcase = (obj: unknown, deep = true, separator = '_') => {
   return transform({
     obj,
     deep,
     separator,
-    transHandler: underline2camelcase,
-    transKeyHandler: function underline2CamelCaseKey(key: string, separator = '') {
-      const reg = new RegExp(`${separator}([a-zA-Z])`, 'g')
+    transHandler: toCamelcase,
+    transKeyHandler: function toCamelCaseKey(key: string, separator?: string) {
+      separator = separator || '_'
+      key = trim(key, separator)
+      const reg = new RegExp(`${separator}+([^${separator}])`, 'g')
       return key.replace(reg, (_, letter) => {
         return letter.toUpperCase()
       })
@@ -63,13 +66,13 @@ export const underline2camelcase = (obj: unknown, deep = true, separator = '_') 
  * })
  * // => { abc_def_gh: { abc_def_gh: 'abcDefGh' } }
  */
-export const camelcase2underline = (obj: unknown, deep = true, separator = '') => {
+export const toUnderline = (obj: unknown, deep = true, separator = '') => {
   return transform({
     obj,
     deep,
     separator,
-    transHandler: camelcase2underline,
-    transKeyHandler: function camelCase2UnderlineKey(key: string, separator = '') {
+    transHandler: toUnderline,
+    transKeyHandler: function toUnderlineKey(key: string, separator = '') {
       const reg = new RegExp(`${separator}([A-Z])`, 'g')
       return key.replace(reg, (_, letter) => {
         return `_${letter.toLowerCase()}`

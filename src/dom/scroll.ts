@@ -1,12 +1,12 @@
 import raf from './raf'
 
 interface ScrollOption {
-  el?: Window | Element,
-  currentTime?: number,
-  increment?: number,
-  duration?: number,
-  start?: number,
-  change?: number,
+  el?: Window | Element
+  currentTime?: number
+  increment?: number
+  duration?: number
+  start?: number
+  change?: number
   ease?: (t: number, b: number, c: number, d: number) => number
 }
 
@@ -15,7 +15,7 @@ const genDefaultOptions = (): ScrollOption => ({
   currentTime: 0,
   increment: 20, // time increment
   duration: 500, // animation duration
-  ease: easeInOutQuad
+  ease: easeInOutQuad,
 })
 
 const defaultOptions = genDefaultOptions()

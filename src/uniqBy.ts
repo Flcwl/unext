@@ -5,7 +5,7 @@
  * @param {T[]} arr
  * @param {string} key
  */
-export const uniqBy = <T>(arr: T[], key: string): T[] => {
+const uniqBy = <T>(arr: T[], key: string): T[] => {
   const visited = new Set()
 
   return arr.filter((item) => {
@@ -16,3 +16,5 @@ export const uniqBy = <T>(arr: T[], key: string): T[] => {
     return true
   })
 }
+
+export default uniqBy

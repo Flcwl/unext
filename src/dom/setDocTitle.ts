@@ -3,8 +3,10 @@
  *
  * @param {string?} docTitle
  */
-export const setDocTitle = (docTitle?: string) => {
+const setDocTitle = (docTitle?: string) => {
   if (docTitle !== document.title) {
     document.title = docTitle
   }
 }
+
+export default setDocTitle

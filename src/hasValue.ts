@@ -4,6 +4,8 @@ const _isNaN = Number.isNaN
  *
  * @param {any} o
  */
-export const hasValue = (o: unknown): boolean => {
+const hasValue = (o: unknown): boolean => {
   return typeof o !== 'undefined' && o !== null && !_isNaN(o)
 }
+
+export default hasValue

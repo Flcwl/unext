@@ -13,7 +13,7 @@ import hasOwnProp from './hasOwnProp'
  * has({ a: { b: 3 } }, 'a.b.c')
  * // => true
  */
-export const has = (obj: object, path: string[] | string): boolean => {
+const has = (obj: object, path: string[] | string): boolean => {
   const props = Array.isArray(path) ? path : (path + '').split('.')
   let target = obj
 
@@ -26,3 +26,6 @@ export const has = (obj: object, path: string[] | string): boolean => {
   }
   return true
 }
+
+export default has
+

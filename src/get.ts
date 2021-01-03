@@ -10,9 +10,9 @@
  * get({ a: { b: 3 } }, 'a.b')
  * // => 3
  */
-export const get = <T>(obj: Record<string, unknown>, path: string[] | string): T => {
+const get = <T>(obj: Record<string, unknown>, path: string[] | string): T => {
   const props = Array.isArray(path) ? path : (path + '').split('.')
-  let target = obj
+  let target: T = obj as T
 
   for (let i = 0, len = props.length; i < len; ++i) {
     target = target[props[i]]
@@ -20,3 +20,4 @@ export const get = <T>(obj: Record<string, unknown>, path: string[] | string): T
   return target
 }
 
+export default get

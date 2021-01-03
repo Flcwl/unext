@@ -5,7 +5,7 @@
  * @param timeout
  */
 // eslint-disable-next-line @typescript-eslint/ban-types
-export const throttle = (callback: Function, timeout: number): Function => {
+const throttle = (callback: Function, timeout: number): Function => {
   let timer: undefined | number | NodeJS.Timeout = undefined
 
   return function(...args: unknown[]) {
@@ -18,3 +18,4 @@ export const throttle = (callback: Function, timeout: number): Function => {
     }, timeout)
   }
 }
+export default throttle

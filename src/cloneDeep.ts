@@ -1,10 +1,11 @@
-const isArray = Array.isArray
 import { isBrowser } from './env'
+const isArray = Array.isArray
+
 /**
  * deep clone
  * @param src
  */
-export const cloneDeep = <T>(src: T): T => {
+const cloneDeep = <T>(src: T): T => {
   if (typeof src !== 'object' || src === null) {
     return src
   }
@@ -30,3 +31,5 @@ export const cloneDeep = <T>(src: T): T => {
   }
   return target
 }
+
+export default cloneDeep

@@ -1,4 +1,4 @@
-import { raf } from './raf';
+import raf from './raf';
 
 // options可设置参数如下
 const genDefaultOptions = () => ({
@@ -19,7 +19,7 @@ const _animateScroll = (data) => {
 }
 
 // 滚动条滚动动画
-export const Scroll = {
+const Scroll = {
   /**
    * 滚动到y的位置，动画方式： easeInOut
    *
@@ -48,6 +48,7 @@ export const Scroll = {
   },
 }
 
+export default Scroll
 
 export function currentYPosition (el = window) {
   return (el === window ? Math.ceil(window.pageYOffset || window.scrollY) : el.scrollTop) || 0

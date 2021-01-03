@@ -6,7 +6,7 @@
  * @param {(index: number) => T} fill
  * @returns {T[]}
  */
-export const initList = <T>(size: number, fill: (index: number) => T | unknown): T[] => {
+const initList = <T>(size: number, fill: (index: number) => T | unknown): T[] => {
   const arr = []
 
   if (typeof fill === 'function') {
@@ -21,3 +21,5 @@ export const initList = <T>(size: number, fill: (index: number) => T | unknown):
 
   return arr
 }
+
+export default initList

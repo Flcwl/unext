@@ -1,6 +1,6 @@
 import isObject from './isObject'
 import hasOwnProp from './hasOwnProp'
-import { cloneDeep } from './cloneDeep'
+import cloneDeep from './cloneDeep'
 
 /**
  * Merge objects deep but not union array

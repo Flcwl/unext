@@ -8,7 +8,7 @@ import isIOS from "./isIOS"
  *
  * @param {string | DOM} $textarea
  */
-export const copyToClipboard = ($textarea) => {
+const copyToClipboard = ($textarea) => {
   let destroyTextArea = null
 
   if (typeof $textarea === 'string') {
@@ -95,3 +95,5 @@ function isSupported(action) {
   const support = document.queryCommandSupported
   return !!support && support(action)
 }
+
+export default copyToClipboard

@@ -4,6 +4,8 @@ function _raf () {
   }
 }
 
-export const raf = (() => {
+const raf = (() => {
   return _raf() || ((callback: Function, delay: number) => window.setTimeout(callback, delay || 17))
 })()
+
+export default raf

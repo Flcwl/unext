@@ -4,6 +4,8 @@
  * @generic T
  * @param {T[]} arr
  */
-export const uniq = <T>(arr: T[]): T[]=> {
+const uniq = <T>(arr: T[]): T[]=> {
   return Array.from(new Set(arr))
 }
+
+export default uniq

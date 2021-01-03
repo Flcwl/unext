@@ -3,7 +3,7 @@
  *
  * @param link
  */
-export const download = (link: string) => {
+const download = (link: string) => {
   const isChrome = navigator.userAgent.indexOf('Chrome') !== -1
   if (isChrome) {
     window.location.href = link
@@ -15,3 +15,5 @@ export const download = (link: string) => {
   document.body.appendChild(iframe)
   iframe.src = link
 }
+
+export default download

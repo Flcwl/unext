@@ -5,11 +5,11 @@
  * @param timeout
  */
 export const debounce = (callback: Function, timeout: number): Function => {
-  let timer: undefined | number = undefined
+  let timer: undefined | number | NodeJS.Timeout = undefined
 
-  return function(...args: any[]) {
+  return function debounced (...args: unknown[]) {
     if (timer) {
-      clearTimeout(timer)
+      clearTimeout(timer as number)
     }
 
     timer = setTimeout(() => {
@@ -18,3 +18,5 @@ export const debounce = (callback: Function, timeout: number): Function => {
     }, timeout)
   }
 }
+
+export default debounce

@@ -7,7 +7,7 @@
  * @param {*} ignores
  * @Refs https://webpack.js.org/guides/dependency-management/#require-context
  */
-export function importAllFiles(r, ignores = ['./index.js']) {
+const importAllFiles = (r, ignores = ['./index.js']) => {
   if (!r) r = require.context('./', false, /\.js$/)
   const cache = {}
   r.keys()
@@ -18,3 +18,5 @@ export function importAllFiles(r, ignores = ['./index.js']) {
     })
   return cache
 }
+
+export default importAllFiles

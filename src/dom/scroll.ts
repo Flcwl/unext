@@ -1,16 +1,29 @@
 import raf from './raf'
 
-// options可设置参数如下
-const genDefaultOptions = () => ({
+interface ScrollOption {
+  el?: Window | Element,
+  currentTime?: number,
+  increment?: number,
+  duration?: number,
+  start?: number,
+  change?: number,
+  ease?: (t: number, b: number, c: number, d: number) => number
+}
+
+const genDefaultOptions = (): ScrollOption => ({
   el: window,
   currentTime: 0,
-  increment: 20, // 时间增量
-  duration: 500, // 动画时长
+  increment: 20, // time increment
+  duration: 500, // animation duration
+  ease: easeInOutQuad
 })
 
-const _animateScroll = (data) => {
+const defaultOptions = genDefaultOptions()
+
+const _animateScroll = (data: ScrollOption) => {
   data.currentTime += data.increment
-  const val = easeInOutQuad(data.currentTime, data.start, data.change, data.duration) // 计算每次移动的数值
+  // calculate move
+  const val = data.ease(data.currentTime, data.start, data.change, data.duration)
   data.el.scrollTo(0, val)
   const animateScroll = _animateScroll.bind(null, data)
   if (data.currentTime < data.duration) {
@@ -18,44 +31,40 @@ const _animateScroll = (data) => {
   }
 }
 
-// 滚动条滚动动画
 const Scroll = {
   /**
-   * 滚动到y的位置，动画方式： easeInOut
+   * scroll to Y pos
    *
-   * @param {number} y 滚动位置
-   * @param {object} [options={}] 可选参数 见上
-   * @todo 扩展动画参数 easing | 滚动结束回调
+   * @param y scroll Pos
+   * @param options default is `{}`
    */
-  animateScrollTo(y, options = {}) {
+  scrollTo(y: number, options: ScrollOption = {}) {
     const start = currentYPosition(options.el) || 0
-    const defaultOpt = genDefaultOptions()
-    const data = Object.assign(defaultOpt, options, {
-      start, // 滚动起始位置
-      change: y - start, // 回到顶部，位移为负
+    const data = Object.assign(defaultOptions, options, {
+      start, // scroll's start
+      change: y - start,
     })
 
     _animateScroll(data)
   },
 
   /**
-   * 滚动到浏览器顶部
-   *
-   * @param {object} options 可选参数 见上
+   * scroll To Top
+   * @param options
    */
-  scrollToTop(options) {
-    this.animateScrollTo(0, options)
+  scrollToTop(options: ScrollOption) {
+    this.scrollTo(0, options)
   },
 }
 
 export default Scroll
 
-export function currentYPosition(el = window) {
-  return (el === window ? Math.ceil(window.pageYOffset || window.scrollY) : el.scrollTop) || 0
+export function currentYPosition(el: Window | Element = window) {
+  return (el === window ? Math.ceil(window.pageYOffset || window.scrollY) : (el as Element).scrollTop) || 0
 }
 
-// 计算动画 easeInOut 末位置
-export function easeInOutQuad(t, b, c, d) {
+// easeInOut bezier curve
+export function easeInOutQuad(t: number, b: number, c: number, d: number) {
   t /= d / 2
   if (t < 1) return (c / 2) * t * t + b
   t--

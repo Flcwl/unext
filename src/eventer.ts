@@ -14,6 +14,7 @@ class Eventer {
   }
 
   on = (type: string, callback: Function) => {
+    // eslint-disable-next-line @typescript-eslint/no-extra-semi
     ;(this.subscribers[type] = this.subscribers[type] || []).push(callback)
     return this
   }

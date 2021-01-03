@@ -6,4 +6,5 @@
  * @param {(index: number) => T} fill
  * @returns {T[]}
  */
-export declare const initList: <T>(size: number, fill: (index: number) => unknown) => T[];
+declare const initList: <T>(size: number, fill: (index: number) => unknown) => T[];
+export default initList;

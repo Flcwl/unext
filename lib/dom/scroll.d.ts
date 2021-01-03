@@ -1,4 +1,4 @@
-export declare const Scroll: {
+declare const Scroll: {
     /**
      * 滚动到y的位置，动画方式： easeInOut
      *
@@ -14,5 +14,6 @@ export declare const Scroll: {
      */
     scrollToTop(options: any): void;
 };
+export default Scroll;
 export declare function currentYPosition(el?: Window & typeof globalThis): any;
 export declare function easeInOutQuad(t: any, b: any, c: any, d: any): any;

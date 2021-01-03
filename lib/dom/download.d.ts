@@ -3,4 +3,5 @@
  *
  * @param link
  */
-export declare const download: (link: string) => void;
+declare const download: (link: string) => void;
+export default download;

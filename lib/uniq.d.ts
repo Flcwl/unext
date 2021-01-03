@@ -4,4 +4,5 @@
  * @generic T
  * @param {T[]} arr
  */
-export declare const uniq: <T>(arr: T[]) => T[];
+declare const uniq: <T>(arr: T[]) => T[];
+export default uniq;

@@ -4,4 +4,5 @@
  * @param {unknown} o
  * @param {number} base default is `0`
  */
-export declare const isArrayLargeBase: (o: unknown, base?: number) => boolean;
+declare const isArrayLargeBase: (o: unknown, base?: number) => boolean;
+export default isArrayLargeBase;

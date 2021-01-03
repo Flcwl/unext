@@ -5,4 +5,5 @@
  * @param {T[]} arr
  * @param {string} key
  */
-export declare const uniqBy: <T>(arr: T[], key: string) => T[];
+declare const uniqBy: <T>(arr: T[], key: string) => T[];
+export default uniqBy;

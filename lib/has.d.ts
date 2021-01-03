@@ -11,4 +11,5 @@
  * has({ a: { b: 3 } }, 'a.b.c')
  * // => true
  */
-export declare const has: (obj: object, path: string[] | string) => boolean;
+declare const has: (obj: object, path: string[] | string) => boolean;
+export default has;

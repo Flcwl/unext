@@ -4,4 +4,5 @@
  * @param callback
  * @param timeout
  */
-export declare const throttle: (callback: Function, timeout: number) => Function;
+declare const throttle: (callback: Function, timeout: number) => Function;
+export default throttle;

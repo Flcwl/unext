@@ -9,7 +9,7 @@ declare class Eventer {
     subscribers: {};
     constructor();
     on: (type: string, callback: Function) => this;
-    notify: (type: string, ...args: unknown[]) => this;
+    trigger: (type: string, ...args: unknown[]) => this;
     off: (type: string, callback: Function) => this;
 }
 export default Eventer;

@@ -10,4 +10,5 @@
  * set(a, 'a.b', 4)
  * // => { a: { b: 4 } }
  */
-export declare const set: (obj: object, path: string[] | string, value: unknown) => void;
+declare const set: (obj: object, path: string[] | string, value: unknown) => void;
+export default set;

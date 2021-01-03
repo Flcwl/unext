@@ -10,4 +10,5 @@
  * get({ a: { b: 3 } }, 'a.b')
  * // => 3
  */
-export declare const get: <T>(obj: Record<string, unknown>, path: string[] | string) => T;
+declare const get: <T>(obj: Record<string, unknown>, path: string[] | string) => T;
+export default get;

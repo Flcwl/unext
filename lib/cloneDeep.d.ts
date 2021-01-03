@@ -2,4 +2,5 @@
  * deep clone
  * @param src
  */
-export declare const cloneDeep: <T>(src: T) => T;
+declare const cloneDeep: <T>(src: T) => T;
+export default cloneDeep;

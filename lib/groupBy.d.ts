@@ -11,4 +11,5 @@
  * groupBy(['one', 'two', 'three'], 'length')
  * // => { '3': ['one', 'two'], '5': ['three'] }
  */
-export declare const groupBy: (list: unknown[], key: string | Function) => unknown;
+declare const groupBy: (list: unknown[], key: string | Function) => unknown;
+export default groupBy;

@@ -3,4 +3,5 @@
  *
  * @param {string?} docTitle
  */
-export declare const setDocTitle: (docTitle?: string) => void;
+declare const setDocTitle: (docTitle?: string) => void;
+export default setDocTitle;

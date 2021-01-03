@@ -3,4 +3,5 @@
  *
  * @param {any} o
  */
-export declare const hasValue: (o: any) => boolean;
+declare const hasValue: (o: unknown) => boolean;
+export default hasValue;

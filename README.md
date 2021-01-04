@@ -11,33 +11,14 @@
 ### Installation
 
 ```console
-npm install --save duration-pretty
+npm install --save unext
 ```
 
 ### Documentation
 
-The `duration(timestamp, type)` get two parameters: timestamp && type.
-
 ```js
-timestamp: number
-type: seconds | milliseconds
-```
+import Scroll from 'unext/dom/scroll'
 
-Format duration time using a template string to `format()`.
-
-```js
-var { duration } = require('duration-pretty')
-
-duration(7380, 'seconds').format('H:mm') // "2:03"
-duration(36610000333, 'milliseconds').format('Y:MM:DD:HH:mm:ss:SSS') // "1:01:28:17:26:40:333"
-```
-
-or using ES6 Module:
-
-```js
-import { duration } from 'duration-pretty'
-
-duration(7380, 'seconds').format('H:mm') // "2:03"
 ```
 
 ## Tests

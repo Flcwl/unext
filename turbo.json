@@ -3,13 +3,26 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": [
+        "lib/**", 
+        ".next/**"
+      ]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": []
     },
     "lint": {
       "outputs": []
     },
     "dev": {
       "cache": false
+    },
+    "clean": {
+      "cache": false
     }
-  }
+  },
+  "globalDependencies": [
+    "$NODE_ENV"
+  ]
 }

@@ -1,0 +1,36 @@
+name: publish-to-npm
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@main
+        with:
+          node-version: 18.x
+
+      - name: Install Deps
+      - uses: pnpm/action-setup@master
+        with:
+          version: 7.13.4
+          run_install: true
+
+      - name: Publish
+        id: changesets
+        uses: changesets/action@main
+        with:
+          publish: pnpm release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,1 +1,1 @@
-export const getChildrenField = (node: any) => node.children
+export const getChildrenField = (node: any) => node.children;

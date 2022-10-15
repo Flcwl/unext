@@ -1,10 +1,10 @@
 /**
  * Prevent the event's behavior, including default events and bubbling.
  */
- export const stopEvent = (evt: React.SyntheticEvent) => {
-  evt.preventDefault()
-  evt.stopPropagation()
-}
+export const stopEvent = (evt: React.SyntheticEvent) => {
+  evt.preventDefault();
+  evt.stopPropagation();
+};
 
 /**
  * Mocking the event behavior for `defaultPrevented`.
@@ -17,9 +17,9 @@ export function mockDefaultHandlers<T extends React.ReactEventHandler<any>>(
     handlers.some((handler) => {
       if (handler) {
         // the `defaultPrevented` will set `true` when execute `event.preventDefault()` in handler.
-        handler(event)
+        handler(event);
       }
-      return event.defaultPrevented
-    })
-  }
+      return event.defaultPrevented;
+    });
+  };
 }

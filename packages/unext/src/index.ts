@@ -1,1 +1,1 @@
-export const unext = 'Waiting...'
+export const unext = "Waiting...";

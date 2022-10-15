@@ -21,7 +21,7 @@ jobs:
           node-version: 18.x
 
       - name: Install Deps
-      - uses: pnpm/action-setup@master
+        uses: pnpm/action-setup@master
         with:
           version: 7.13.4
           run_install: true

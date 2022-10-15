@@ -1,43 +1,46 @@
-import { AnyFunc } from "../types"
+import { AnyFunc } from "../types";
 
 /**
  * Debounce func
  */
- export const debounce = <T extends AnyFunc>(func?: T, options?: DebounceOptions) => {
-  const duration = (options && options.duration) || 150
+export const debounce = <T extends AnyFunc>(
+  func?: T,
+  options?: DebounceOptions
+) => {
+  const duration = (options && options.duration) || 150;
 
-  let timer = 0
+  let timer = 0;
 
   const cancel = () => {
     if (timer) {
-      window.clearTimeout(timer)
-      timer = 0
+      window.clearTimeout(timer);
+      timer = 0;
     }
-  }
+  };
 
   const debounceFn = (...args: any[]) => {
     if (timer) {
-      cancel()
+      cancel();
     }
 
     if (func) {
       timer = window.setTimeout(() => {
-        func.apply(null, args)
-        timer = 0
-      }, duration)
+        func.apply(null, args);
+        timer = 0;
+      }, duration);
     }
-  }
+  };
 
-  debounceFn.cancel = cancel
+  debounceFn.cancel = cancel;
 
-  return debounceFn as T & { cancel: () => void }
-}
+  return debounceFn as T & { cancel: () => void };
+};
 
 interface DebounceOptions {
   /**
    * debounce duration
    */
-   duration?: number;
+  duration?: number;
 }
 
-export type DebounceReturn = ReturnType<typeof debounce>
+export type DebounceReturn = ReturnType<typeof debounce>;

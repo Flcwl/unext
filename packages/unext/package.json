@@ -1,12 +1,46 @@
 {
   "name": "unext",
   "version": "2.0.0-alpha.0",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "license": "MIT",
+  "description": "A modern web utils collection using esnext.",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": ["lib"],
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/types/*.d.ts",
+  "typings": "lib/types/*.d.ts",
+  "exports": {
+    ".": {
+      "require": "./lib/cjs/index.js",
+      "default": "./lib/esm/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "lint": "eslint *.ts*",
-    "build": "tsc ./src/index.ts"
+    "build:esm": "tsc --outDir lib/esm",
+    "build:cjs": "tsc --module CommonJS --outDir lib/cjs",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir lib/types",
+    "build": "concurrently pnpm:build:*"
+  },
+  "author": "Flcwl",
+  "license": "MIT",
+  "keywords": [
+    "unext",
+    "utils",
+    "esnext",
+    "modules"
+  ],
+  "homepage": "https://github.com/Flcwl/unext",
+  "bugs": {
+    "url": "https://github.com/Flcwl/unext/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flcwl/unext.git"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

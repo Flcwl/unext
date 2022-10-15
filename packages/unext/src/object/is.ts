@@ -4,9 +4,8 @@ import { Dict } from "../types";
  * Assert is an objectLike
  * TODO: Assert the return type
  */
- export const isObjectLike = (arg: unknown): arg is any =>
- !!arg && typeof arg === "object";
-
+export const isObjectLike = (arg: unknown): arg is any =>
+  !!arg && typeof arg === "object";
 
 /**
  * Assert is an object

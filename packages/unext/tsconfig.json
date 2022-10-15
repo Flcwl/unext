@@ -1,5 +1,11 @@
 {
   "extends": "tsconfig/unext.json",
+  "compilerOptions": {
+    "outDir": "./lib",
+    "declaration": true,
+    "module": "esnext",
+    "noEmit": false,
+  },
   "include": ["src/**/*"],
   "exclude": ["dist", "build", "node_modules"]
 }

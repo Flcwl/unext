@@ -1,5 +1,5 @@
 import { BaseTreeNode } from "./types";
-import { visitTree } from "./visit";
+import { visitTree } from "./visit-tree";
 
 /**
  * Get all leaf nodes by TreeNode.

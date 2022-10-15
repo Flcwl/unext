@@ -1,20 +1,7 @@
-import { __DEV__ } from "../env";
-
-export const invariant = (condition: any, format: string, ...args: any[]) => {
-  if (__DEV__) {
-    if (!condition) {
-      let argIndex = 0;
-      const message = `[LOG] ` + format.replace(/%s/g, () => args[argIndex++]);
-
-      try {
-        // To find the call stack of error.
-        throw new Error(message);
-      } catch (error) {
-        // support for SSR.
-        if (typeof console !== "undefined") {
-          console.error(error);
-        }
-      }
-    }
-  }
-};
+export * from '../array/is'
+export * from '../dom/is'
+export * from '../func/is'
+export * from '../nullish/is'
+export * from '../number/is'
+export * from '../object/is'
+export * from '../string/is'

@@ -2,10 +2,6 @@ export interface BaseTreeNode extends Record<string, any> {
   children?: BaseTreeNode[];
 }
 
-export interface VisitTreeOptions {
-  childrenKey?: string;
-}
-
 export interface BaseFlattedTreeNodeWithChildren<
   T extends BaseFlattedTreeNode<any>
 > extends BaseFlattedTreeNode<any> {

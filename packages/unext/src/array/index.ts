@@ -5,3 +5,4 @@ export * from "./for-count";
 export * from "./map-range";
 export * from "./normalize-array";
 export * from "./uniq-by";
+export * from "./remove-one";

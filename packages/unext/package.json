@@ -10,8 +10,8 @@
   ],
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
-  "types": "lib/types/*.d.ts",
-  "typings": "lib/types/*.d.ts",
+  "types": "lib/types/index.d.ts",
+  "typings": "lib/types/index.d.ts",
   "exports": {
     ".": {
       "require": "./lib/cjs/index.js",

@@ -1,5 +1,11 @@
 # unext
 
+## 2.0.1
+
+### Patch Changes
+
+- removeOne
+
 ## 2.0.0
 
 ### Patch Changes

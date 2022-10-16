@@ -1,11 +1,13 @@
 {
   "name": "unext",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.1",
   "description": "A modern web utils collection using esnext.",
   "directories": {
     "lib": "lib"
   },
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "types": "lib/types/*.d.ts",

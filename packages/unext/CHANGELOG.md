@@ -1,5 +1,11 @@
 # unext
 
+## 2.0.2
+
+### Patch Changes
+
+- af0028c: update tsc config
+
 ## 2.0.1
 
 ### Patch Changes

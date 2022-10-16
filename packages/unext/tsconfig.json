@@ -2,7 +2,6 @@
   "extends": "tsconfig/unext.json",
   "compilerOptions": {
     "outDir": "./lib",
-    "declaration": true,
     "module": "esnext",
     "noEmit": false,
   },

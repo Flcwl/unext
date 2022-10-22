@@ -11,3 +11,10 @@ export const isUndef = (arg: unknown): arg is undefined | void =>
  */
 export const isNullish = (arg: unknown): arg is Nullish =>
   arg === null || arg === undefined;
+
+/**
+ * Assert is empty
+ */
+export const isEmpty = (arg: unknown): boolean => {
+  return isNullish(arg) || Number.isNaN(arg);
+};

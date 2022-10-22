@@ -1,19 +1,15 @@
 import { isNullish } from "../nullish";
 import { getObjectType } from "./get-object-type";
 
+/**
+ * clone deep
+ */
 export const clone = <T>(obj: T): T => {
   if (isNullish(obj)) return obj;
 
   const objType = getObjectType(obj);
 
   switch (objType) {
-    case "Date":
-      const objDate: Date = obj as any;
-      const clonedDate = new Date();
-      clonedDate.setTime(objDate.getTime());
-
-      return clonedDate as any as T;
-
     case "Object":
       const copiedObject: any = {};
 
@@ -32,7 +28,7 @@ export const clone = <T>(obj: T): T => {
 
       return copiedArray as any as T;
     default:
-      // not need clone such as `BitInt`, `BitFloat`, 'RegExp'
+      // not need clone such as `Date`, `BitInt`, `BitFloat`, 'RegExp'
       return obj;
   }
 };

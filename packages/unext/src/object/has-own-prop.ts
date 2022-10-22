@@ -1,3 +1,6 @@
 const hasOwnProperty = Object.prototype.hasOwnProperty;
-export const hasOwnProp = (obj: object, key: string): boolean =>
+/**
+ * Check if existed Property in obj.
+ */
+export const hasOwnProp = (obj: any, key: string): boolean =>
   hasOwnProperty.call(obj, key);

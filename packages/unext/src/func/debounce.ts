@@ -7,7 +7,7 @@ export const debounce = <T extends AnyFunc>(
   func?: T,
   options?: DebounceOptions
 ) => {
-  const duration = (options && options.duration) || 150;
+  const timeout = (options && options.timeout) || 150;
 
   let timer = 0;
 
@@ -27,7 +27,7 @@ export const debounce = <T extends AnyFunc>(
       timer = window.setTimeout(() => {
         func.apply(null, args);
         timer = 0;
-      }, duration);
+      }, timeout);
     }
   };
 
@@ -38,9 +38,9 @@ export const debounce = <T extends AnyFunc>(
 
 interface DebounceOptions {
   /**
-   * debounce duration
+   * debounce timeout
    */
-  duration?: number;
+  timeout?: number;
 }
 
 export type DebounceReturn = ReturnType<typeof debounce>;

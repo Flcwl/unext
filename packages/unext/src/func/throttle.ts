@@ -5,8 +5,10 @@ import { AnyFunc } from "../types";
  */
 export const throttle = <T extends AnyFunc>(
   callback: T,
-  timeout: number
+  options?: ThrottleOptions
 ): T => {
+  const timeout = (options && options.timeout) || 150;
+
   let timer: undefined | number | NodeJS.Timeout = undefined;
 
   return function (...args: any[]) {
@@ -18,3 +20,12 @@ export const throttle = <T extends AnyFunc>(
     }, timeout);
   } as T;
 };
+
+interface ThrottleOptions {
+  /**
+   * throttle timeout
+   */
+  timeout?: number;
+}
+
+export type ThrottleReturn = ReturnType<typeof throttle>;

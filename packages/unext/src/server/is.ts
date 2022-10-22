@@ -1,4 +1,4 @@
-const _isServer = () => {
+const isServer = () => {
   return (
     typeof process !== "undefined" &&
     process.versions != null &&
@@ -6,4 +6,4 @@ const _isServer = () => {
   );
 };
 
-export const isServer = (() => _isServer())();
+export const canUseNode = (() => isServer())();

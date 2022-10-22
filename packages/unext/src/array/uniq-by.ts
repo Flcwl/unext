@@ -8,10 +8,11 @@ export const uniqBy = <T extends Record<string, any>>(
   const visitedSet = new Set<any>();
 
   return array.reduce((prev, cur) => {
-    const key = cur[keyName];
+    let value = cur[keyName];
+    value = value !== 0 ? value : 0; // -0 as 0
 
-    if (!visitedSet.has(key)) {
-      visitedSet.add(key);
+    if (!visitedSet.has(value)) {
+      visitedSet.add(value);
       prev.push(cur);
     }
 

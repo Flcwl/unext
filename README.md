@@ -1,3 +1,5 @@
+
+
 # Unext
 
 [![Build Status](https://travis-ci.org/Flcwl/unext.svg?branch=master)](https://travis-ci.org/github/Flcwl/unext)
@@ -17,7 +19,7 @@ npm install --save unext
 ### Documentation
 
 ```js
-import Scroll from "unext/dom/scroll";
+import { isNumber } from "unext";
 ```
 
 ## Tests
